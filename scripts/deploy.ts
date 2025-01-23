@@ -1,17 +1,14 @@
 import hre from "hardhat";
+import { PK1 } from "../hardhat.anyflow.config";
 
 export async function main() {
-    console.log('Deploying AnyFlowERC721...');
+    console.log('Deploying SimpleOwnable...');
 
-    const args = [
-        '0xA71a71A71a71a71A71a71a71a71A71a71A71A71a',   // _initialOwner
-        'AnyFlowERC721', // _name
-        'AF',           // _symbol
-    ] as const;
+    const contract = await hre.viem.deployContract("SimpleOwnable");
 
-    const contract = await hre.viem.deployContract("AnyFlowERC721", args);
+    await contract.write.transferOwnership(["0x0C86714619Ee1Ba9C4164cAAC7988d02538A6264"]);
 
-    console.log(`Contract AnyFlowERC721 deployed to: ${contract.address}`);
+    console.log(`Contract SimpleOwnable deployed to: ${contract.address}`);
 }
 
 main()
