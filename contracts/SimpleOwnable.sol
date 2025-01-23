@@ -23,7 +23,7 @@ contract SimpleOwnable {
         return msg.sender == owner;
     }
 
-    function setMessage(string memory _message) public onlyOwner {
+    function setMessage(string memory _message) public {
         message = _message;
     }
 }
