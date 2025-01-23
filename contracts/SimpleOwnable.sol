@@ -3,8 +3,8 @@ contract SimpleOwnable {
 
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
-    constructor() {
-        owner = msg.sender;
+    constructor(address setOwner) {
+        owner = setOwner;
         emit OwnershipTransferred(address(0), msg.sender);
     }
 
