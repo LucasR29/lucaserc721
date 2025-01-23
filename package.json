@@ -24,7 +24,7 @@
     "solidity-coverage": "^0.8.1",
     "ts-node": "^10.9.2",
     "typescript": "~5.0.0",
-    "viem": "^2.9.26"
+    "viem": "^2.22.11"
   },
   "dependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.8",
