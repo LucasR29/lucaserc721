@@ -1,11 +1,11 @@
 contract SimpleOwnable {
     address public owner;
+    string public message;
 
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
     constructor(address setOwner) {
         owner = setOwner;
-        emit OwnershipTransferred(address(0), msg.sender);
     }
 
     modifier onlyOwner() {
@@ -21,5 +21,9 @@ contract SimpleOwnable {
 
     function isOwner() public view returns (bool) {
         return msg.sender == owner;
+    }
+
+    function setMessage(string memory _message) public onlyOwner {
+        message = _message;
     }
 }
