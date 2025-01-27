@@ -23,7 +23,9 @@ export async function main() {
     await contract.waitForDeployment();
     const contractAddress = await contract.getAddress();
 
-    const tx = await contract.setMessage('Hello World');
+    const t = "blebas"; 
+    const tx = await contract.setMessage(t);
+    console.log(t);
     const txHash = tx.hash;
     console.log(`Transaction hash: ${txHash}`);
 }
