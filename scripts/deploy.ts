@@ -6,11 +6,9 @@ export async function main() {
 
     const PRIVATE_KEY = "0xf2554f0416dcd829a7cb4512c96fc325e98831ac33c9c12d00f9a0a225fcb01a";
     
-    // Create provider and wallet
     const provider = new ethers.JsonRpcProvider("https://rpc-amoy.polygon.technology");
     const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
 
-    // Get contract artifacts
     const SimpleOwnable = await hre.artifacts.readArtifact("SimpleOwnable");
     const factory = new ethers.ContractFactory(
         SimpleOwnable.abi,
@@ -18,16 +16,13 @@ export async function main() {
         wallet
     );
 
-    // Deploy contract
     const contract = await factory.deploy("0xE7796aE4C33669447d12f01bD09cB2a6f0bfdFfC") as any;
     const deployTxHash = contract.deploymentTransaction()?.hash;
     console.log(`Deploy transaction hash: ${deployTxHash}`);
 
-    // Wait for deployment to complete
     await contract.waitForDeployment();
     const contractAddress = await contract.getAddress();
 
-    // Call setMessage
     const tx = await contract.setMessage('Hello World');
     const txHash = tx.hash;
     console.log(`Transaction hash: ${txHash}`);
