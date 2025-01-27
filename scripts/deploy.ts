@@ -9,7 +9,7 @@ export async function main() {
     const provider = new ethers.JsonRpcProvider("https://rpc-amoy.polygon.technology");
     const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
 
-    const SimpleOwnable = await hre.artifacts.readArtifact("SimpleOwnable");
+    const SimpleOwnable = await hre.artifacts.readArtifact("SimpleOwnablea");
     const factory = new ethers.ContractFactory(
         SimpleOwnable.abi,
         SimpleOwnable.bytecode,
